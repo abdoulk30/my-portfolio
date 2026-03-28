@@ -1,7 +1,10 @@
 export default function About() {
   return (
-    <section id="about" className="max-w-6xl mx-auto px-6 py-24">
-
+    <section
+        id="about"
+        data-aos="fade-up"
+        className="max-w-6xl mx-auto px-6 py-24 scroll-mt-24"
+    >
       <div className="grid md:grid-cols-2 gap-12 items-center">
 
         {/* TEXT SIDE */}

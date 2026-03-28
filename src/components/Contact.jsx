@@ -1,6 +1,10 @@
 export default function Contact() {
   return (
-    <section id="contact" className="max-w-4xl mx-auto px-6 py-24 text-center">
+    <section
+        id="contact"
+        data-aos="fade-up"
+        className="max-w-4xl mx-auto px-6 py-24 text-center scroll-mt-24"
+    >
 
       <h2 className="text-3xl font-semibold mb-6">
         Contact

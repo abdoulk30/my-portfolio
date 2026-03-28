@@ -21,7 +21,11 @@ export default function Skills() {
 
 
   return (
-    <section id="skills" className="max-w-6xl mx-auto px-6 py-24">
+    <section
+        id="skills"
+        data-aos="fade-up"
+        className="max-w-6xl mx-auto px-6 py-24 scroll-mt-24"
+    >
 
       <h2 className="text-3xl font-semibold mb-12 text-center">
         Skills

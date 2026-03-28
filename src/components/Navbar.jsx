@@ -1,6 +1,6 @@
 export default function Navbar({ darkMode, setDarkMode }) {
   return (
-    <nav className="sticky top-0 backdrop-blur border-b border-gray-700">
+    <nav className="sticky top-0 bg-slate-900/80 backdrop-blur border-b border-gray-700 z-50">
 
       <div className="max-w-6xl mx-auto flex justify-between items-center p-5">
 
