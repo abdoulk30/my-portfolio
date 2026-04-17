@@ -1,5 +1,4 @@
 export default function Skills() {
-
   const skillGroups = [
     {
       title: "Frontend",
@@ -19,49 +18,39 @@ export default function Skills() {
     }
   ]
 
-
   return (
     <section
         id="skills"
         data-aos="fade-up"
-        className="max-w-6xl mx-auto px-6 py-24 scroll-mt-24"
+        className="max-w-6xl mx-auto px-6 py-12 scroll-mt-24"
     >
-
-      <h2 className="text-3xl font-semibold mb-12 text-center">
+      {/* Added text-primary to h2 */}
+      <h2 className="text-3xl font-semibold mb-12 text-center text-primary">
         Skills
       </h2>
 
-
       <div className="grid md:grid-cols-2 gap-8">
-
         {skillGroups.map((group, index) => (
-
+          /* Swapped bg-slate-800 for your .card class from index.css */
           <div
             key={index}
-            className="bg-slate-800 p-6 rounded-2xl"
+            className="card p-6"
           >
-
-            <h3 className="text-xl font-semibold mb-4">
+            <h3 className="text-xl font-semibold mb-4 text-primary">
               {group.title}
             </h3>
 
-
-            <ul className="space-y-2 text-gray-400">
-
+            {/* Swapped text-gray-400 for text-secondary */}
+            <ul className="space-y-2 text-secondary">
               {group.skills.map((skill, i) => (
                 <li key={i}>
                   • {skill}
                 </li>
               ))}
-
             </ul>
-
           </div>
-
         ))}
-
       </div>
-
     </section>
   )
 }

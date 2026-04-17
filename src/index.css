@@ -2,6 +2,54 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html, body {
+    /* This ensures the 'bounce' area matches your Light Mode color */
+    @apply bg-primaryBg transition-colors duration-300;
+  }
+
+  html.dark, html.dark body {
+    /* This ensures the 'bounce' area matches your Dark Mode color */
+    @apply bg-slate-900;
+  }
+}
+
 html {
   scroll-behavior: smooth;
+}
+
+/* 🔥 Reusable UI system */
+
+@layer components {
+
+  .card {
+    @apply bg-white border border-gray-200 shadow-sm rounded-2xl
+          dark:bg-slate-800 dark:border-slate-700 dark:shadow-lg;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-2
+           hover:shadow-md dark:hover:shadow-2xl;
+  }
+
+  .text-primary {
+    @apply text-gray-900 dark:text-white;
+  }
+
+  .text-secondary {
+    @apply text-gray-600 dark:text-gray-400;
+  }
+
+  .tag {
+    @apply px-3 py-1 text-xs rounded-full
+           bg-gray-100 text-gray-700
+           dark:bg-slate-700 dark:text-gray-200;
+  }
+
+  .button {
+    @apply px-4 py-2 rounded-lg border transition
+           border-gray-300 text-slate-900 hover:bg-black hover:text-white
+           dark:border-gray-600 dark:text-white
+           dark:hover:bg-white dark:hover:text-black;
+  }
 }

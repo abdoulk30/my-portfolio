@@ -1,10 +1,26 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>my-portfolio</title>
+    <title>Portfolio</title>
+
+    <script>
+      (function() {
+        const savedTheme = localStorage.getItem('theme');
+        const isDark = savedTheme === 'dark' || !savedTheme;
+        
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+          // Force the background color immediately to match slate-900 (#0f172a)
+          document.documentElement.style.backgroundColor = '#0f172a';
+        } else {
+          document.documentElement.classList.remove('dark');
+          // Match your primaryBg (#f5f7fb)
+          document.documentElement.style.backgroundColor = '#f5f7fb';
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
