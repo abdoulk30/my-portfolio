@@ -31,7 +31,7 @@ export default function About() {
 
         <div className="flex justify-center">
           <img 
-            src="/images/my-photo.PNG"  // <-- Update this path if your file name is different!
+            src="/images/my-photo.png"  // <-- Update this path if your file name is different!
             alt="Abdoul Karim Ba"
             className="w-72 h-96 rounded-2xl object-cover shadow-2xl border border-gray-300 dark:border-slate-700" 
           />
