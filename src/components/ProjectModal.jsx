@@ -1,100 +1,105 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function ProjectModal({ project, onClose }) {
+  const [isZoomed, setIsZoomed] = useState(false);
+
   useEffect(() => {
     if (!project) return;
-
     const handleEsc = (e) => {
       if (e.key === "Escape") {
-        onClose();
+        if (isZoomed) setIsZoomed(false);
+        else onClose();
       }
     };
-
     document.addEventListener("keydown", handleEsc);
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.removeEventListener("keydown", handleEsc);
-      document.body.style.overflow = "auto";
-    };
-  }, [project, onClose]);
+    return () => document.removeEventListener("keydown", handleEsc);
+  }, [project, onClose, isZoomed]);
 
   if (!project) return null;
 
   return (
-    <div
-      onClick={onClose}
-      className="fixed inset-0 z-50 overflow-y-auto bg-black/70 backdrop-blur-sm px-4 py-32"
-    >
+    <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
+      <div 
+        className="absolute inset-0 bg-black/70 backdrop-blur-sm pointer-events-auto" 
+        onClick={onClose}
+      />
+
       <div
         onClick={(e) => e.stopPropagation()}
-        /* Changed bg-slate-800 to bg-white dark:bg-slate-800 and added text-primary */
-        className="relative w-full max-w-3xl mx-auto rounded-2xl bg-white dark:bg-slate-800 shadow-2xl overflow-hidden text-primary"
+        className="relative z-10 w-[80%] max-w-4xl max-h-[85vh] 
+                   overflow-y-auto rounded-3xl bg-white dark:bg-slate-800 
+                   shadow-2xl text-primary animate-slide-up 
+                   pointer-events-auto scrollbar-hide"
       >
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-2xl text-white transition hover:bg-black/70"
-        >
-          ×
-        </button>
+        
+        {/* STICKY BUTTON */}
+        <div className="sticky top-0 right-0 z-[60] flex justify-end p-4 pointer-events-none">
+          <button
+            onClick={onClose}
+            className="flex h-10 w-10 items-center justify-center 
+                       rounded-full bg-black/50 text-2xl text-white 
+                       backdrop-blur-md transition hover:bg-black/70 
+                       hover:scale-110 active:scale-95 pointer-events-auto"
+          >
+            ×
+          </button>
+        </div>
 
-        <img
-          src={project.image}
-          alt={project.title}
-          className="h-72 w-full object-cover"
-        />
+        {/* IMAGE CONTAINER: With hover effects and zoom cursor */}
+        <div className="-mt-20">
+          <img
+            src={project.image}
+            alt={project.title}
+            onClick={() => setIsZoomed(true)}
+            className="h-64 sm:h-96 w-full object-cover rounded-t-3xl cursor-zoom-in transition-opacity hover:opacity-90"
+          />
+        </div>
 
-        <div className="p-8">
-          <h2 className="mb-4 text-3xl font-semibold">
-            {project.title}
-          </h2>
-
-          <p className="mb-6 text-secondary leading-7">
-            {project.fullDescription}
-          </p>
+        {/* CONTENT AREA */}
+        <div className="p-6 sm:p-10">
+          <h2 className="mb-4 text-3xl sm:text-4xl font-bold">{project.title}</h2>
+          <p className="mb-8 text-secondary text-lg leading-relaxed">{project.fullDescription}</p>
 
           <div className="mb-8">
-            <h3 className="mb-3 font-semibold">Tech Stack</h3>
+            <h3 className="mb-4 text-xl font-semibold">Tech Stack</h3>
             <div className="flex flex-wrap gap-2">
               {project.tech.map((tech, index) => (
-                /* Using your 'tag' class from index.css */
-                <span
-                  key={index}
-                  className="tag"
-                >
-                  {tech}
-                </span>
+                <span key={index} className="tag px-4 py-2 text-sm">{tech}</span>
               ))}
             </div>
           </div>
 
-          <div className="flex gap-4">
+          <div className="flex gap-4 pb-4">
             {project.live && (
-              <a
-                href={project.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                /* Made button adaptive: dark in light mode, light in dark mode */
-                className="rounded-lg bg-gray-900 text-white dark:bg-white dark:text-black px-4 py-2 font-medium transition hover:opacity-90"
-              >
+              <a href={project.live} target="_blank" rel="noopener noreferrer" className="rounded-xl bg-gray-900 text-white dark:bg-white dark:text-black px-6 py-3 font-semibold transition hover:scale-105 active:scale-95">
                 Live Demo
               </a>
             )}
-
             {project.github && (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                /* Replaced hardcoded slate borders with adaptive button classes */
-                className="button px-4 py-2 font-medium transition"
-              >
+              <a href={project.github} target="_blank" rel="noopener noreferrer" className="button px-6 py-3 font-semibold transition hover:scale-105 active:scale-95">
                 GitHub
               </a>
             )}
           </div>
         </div>
       </div>
+
+      {/* FULL SCREEN IMAGE OVERLAY */}
+      {isZoomed && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-4 pointer-events-auto cursor-zoom-out"
+          onClick={() => setIsZoomed(false)}
+        >
+          <img 
+            src={project.image} 
+            alt={project.title}
+            className="max-w-full max-h-full rounded-lg shadow-2xl animate-in fade-in zoom-in duration-300"
+          />
+          <button className="absolute top-10 right-10 text-white text-4xl font-light hover:text-gray-300">
+            ×
+          </button>
+        </div>
+      )}
     </div>
   );
 }

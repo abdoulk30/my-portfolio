@@ -18,7 +18,32 @@ html {
   scroll-behavior: smooth;
 }
 
-/* 🔥 Reusable UI system */
+
+@layer utilities {
+  @keyframes slideUp {
+    from {
+      transform: translateY(100px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out forwards;
+  }
+
+  /* Optional: Hides scrollbar for a cleaner look while allowing scrolling */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
 
 @layer components {
 
