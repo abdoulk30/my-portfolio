@@ -1,16 +1,105 @@
-# React + Vite
+# 🚀 Abdoul Ba — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive personal portfolio built with React and Tailwind CSS to showcase my full-stack development projects, technical skills, and product thinking.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🌐 Live Site
+[View Portfolio](https://your-deployment-url.vercel.app)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📌 About This Project
 
-## Expanding the ESLint configuration
+This portfolio was built to present my work as a full-stack developer in a clean, recruiter-friendly format.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+It highlights:
+- Real-world full-stack applications
+- Frontend UI/UX design skills
+- Backend architecture and API development
+- Product-focused thinking
+
+---
+
+## 🧠 Featured Project
+
+### JobSync
+A full-stack job application tracking platform with authentication, filtering, search, and real-time status management.
+
+**Key Features:**
+- JWT-based authentication with protected routes
+- RESTful API with full CRUD functionality
+- PostgreSQL database integration using Prisma
+- Advanced filtering and search system
+- Responsive React dashboard UI
+
+---
+
+## 🛠️ Tech Stack
+
+- React (Vite)
+- Tailwind CSS
+- JavaScript (ES6+)
+- Node.js & Express (for backend projects showcased)
+- PostgreSQL
+- Prisma ORM
+- JWT Authentication
+- AOS (Animate on Scroll)
+
+---
+
+## 📁 Project Structure
+
+src/
+├── components/
+│ ├── Hero.jsx
+│ ├── About.jsx
+│ ├── Projects.jsx
+│ ├── ProjectModal.jsx
+│ ├── Skills.jsx
+│ ├── Contact.jsx
+│ └── Navbar.jsx
+├── App.jsx
+└── index.css
+
+
+---
+
+## ✨ Features
+
+- Fully responsive design (mobile-first)
+- Dark / Light mode toggle
+- Animated scroll effects
+- Interactive project modals
+- Featured project highlighting system
+- Clean component-based architecture
+
+---
+
+## 🎯 Purpose
+
+This portfolio is designed to demonstrate my ability to:
+- Build full-stack applications
+- Design clean and intuitive user interfaces
+- Work with modern web technologies
+- Ship production-ready projects
+
+---
+
+## 🚀 Deployment
+
+This project is deployed using Vercel for fast global performance and continuous deployment from GitHub.
+
+---
+
+## 📫 Contact
+
+- Email: babdoul778@gmail.com  
+- GitHub: https://github.com/abdoulk30  
+- LinkedIn: https://linkedin.com/in/abdoulk10 
+
+---
+
+## 📄 License
+
+This project is open source and available for learning purposes.
