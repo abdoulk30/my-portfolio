@@ -14,7 +14,7 @@ export default function Skills() {
     },
     {
       title: "Tools",
-      skills: ["Git", "GitHub", "Docker", "Debugging"]
+      skills: ["Git", "GitHub", "Docker", "Debugging", "prompting"]
     }
   ]
 

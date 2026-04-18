@@ -1,12 +1,12 @@
 export default function Hero() {
   return (
     <section className="text-center py-16 px-6">
-      <h1 className="text-5xl font-bold mb-6 text-gray-900 dark:text-white">
-        I build products that solve real problems.
+      <h1 className="text-4xl font-bold mb-6 text-gray-700 dark:text-white max-w-4xl mx-auto leading-tight">
+        Full-Stack Developer building modern, scalable web applications with React and Node.js.
       </h1>
 
       <p className="text-gray-600 dark:text-gray-400 max-w-xl mx-auto mb-8">
-        I design and develop clean, practical applications with a focus on execution and real-world value.
+        I leverage AI to accelerate development and turn ideas into clean, production-ready systems.
       </p>
 
       <div className="flex justify-center gap-4">
