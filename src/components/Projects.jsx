@@ -22,7 +22,7 @@ export default function Projects() {
         "PostgreSQL",
         "JWT",
       ],
-      live: "https://job-sync-eosin.vercel.app/",
+      live: "https://jobsync.dev/",
       github: "https://github.com/abdoulk30/jobSync",
       featured: true, // ⭐ ADDED
     },
