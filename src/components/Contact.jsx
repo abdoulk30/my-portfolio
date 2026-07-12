@@ -1,10 +1,35 @@
+import { Mail } from "lucide-react";
+import { GithubIcon, LinkedinIcon } from "./BrandIcons";
+
 export default function Contact() {
+  const links = [
+    {
+      label: "GitHub",
+      href: "https://github.com/abdoulk30",
+      icon: GithubIcon,
+    },
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/abdoulk10/",
+      icon: LinkedinIcon,
+    },
+    {
+      label: "Email",
+      href: "https://mail.google.com/mail/u/0/#inbox?compose=DmwnWrRrlQqkCHGvFGxkFZZJDSPWRwFrphNZsFFPJVRjFCzgrXZFQDFNbrGPlSpzsFHVvvkmGctQ",
+      icon: Mail,
+    },
+  ];
+
   return (
     <section
         id="contact"
         data-aos="fade-up"
-        className="max-w-4xl mx-auto px-6 py-12 text-center scroll-mt-24"
+        className="max-w-4xl mx-auto px-6 py-16 text-center scroll-mt-24"
     >
+      <div className="flex justify-center">
+        <span className="section-label mb-4">Get in touch</span>
+      </div>
+
       <h2 className="text-3xl font-semibold mb-6 text-primary">
         Contact
       </h2>
@@ -14,31 +39,19 @@ export default function Contact() {
         feel free to reach out.
       </p>
 
-      <div className="flex justify-center gap-8">
-        {/* Swapped bg-slate-800 for the card class to allow light mode colors */}
-        <a
-          href="https://github.com/abdoulk30"
-          target="_blank"
-          className="card px-6 py-3 hover:-translate-y-1 hover:shadow-xl transition text-primary"
-        >
-          GitHub
-        </a>
-
-        <a
-          href="https://www.linkedin.com/in/abdoulk10/"
-          target="_blank"
-          className="card px-6 py-3 hover:-translate-y-1 hover:shadow-xl transition text-primary"
-        >
-          LinkedIn
-        </a>
-
-        <a
-          href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWrRrlQqkCHGvFGxkFZZJDSPWRwFrphNZsFFPJVRjFCzgrXZFQDFNbrGPlSpzsFHVvvkmGctQ"
-          target="_blank"
-          className="card px-6 py-3 hover:-translate-y-1 hover:shadow-xl transition text-primary"
-        >
-          Email
-        </a>
+      <div className="flex flex-wrap justify-center gap-4">
+        {links.map((link) => (
+          <a
+            key={link.label}
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="card card-hover inline-flex items-center gap-2 px-6 py-3 text-primary font-medium"
+          >
+            <link.icon size={16} />
+            {link.label}
+          </a>
+        ))}
       </div>
     </section>
   )

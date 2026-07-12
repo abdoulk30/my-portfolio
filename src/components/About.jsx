@@ -8,6 +8,7 @@ export default function About() {
       <div className="grid md:grid-cols-2 gap-12 items-center">
 
         <div>
+          <span className="section-label mb-4">Who I am</span>
           <h2 className="text-3xl font-semibold mb-6 text-gray-600 dark:text-white">
             About Me
           </h2>
@@ -30,11 +31,14 @@ export default function About() {
         </div>
 
         <div className="flex justify-center">
-          <img 
-            src="/images/my-photo.png"  // <-- Update this path if your file name is different!
-            alt="Abdoul Karim Ba"
-            className="w-72 h-96 rounded-2xl object-cover shadow-2xl border border-gray-300 dark:border-slate-700" 
-          />
+          <div className="relative">
+            <div className="absolute -inset-3 rounded-3xl bg-gradient-to-tr from-accent/30 to-fuchsia-400/20 blur-2xl" />
+            <img
+              src="/images/my-photo.png"
+              alt="Abdoul Karim Ba"
+              className="relative w-72 h-96 rounded-2xl object-cover shadow-2xl border border-gray-300 dark:border-slate-700"
+            />
+          </div>
         </div>
 
       </div>

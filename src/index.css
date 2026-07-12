@@ -5,12 +5,16 @@
 @layer base {
   html, body {
     /* This ensures the 'bounce' area matches your Light Mode color */
-    @apply bg-primaryBg transition-colors duration-300;
+    @apply bg-primaryBg transition-colors duration-300 font-sans;
   }
 
   html.dark, html.dark body {
     /* This ensures the 'bounce' area matches your Dark Mode color */
     @apply bg-slate-900;
+  }
+
+  ::selection {
+    @apply bg-accent/30 text-inherit;
   }
 }
 
@@ -18,6 +22,23 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-slate-700;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 dark:bg-slate-600;
+}
 
 @layer utilities {
   @keyframes slideUp {
@@ -43,18 +64,31 @@ html {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent to-fuchsia-500;
+  }
+
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
 }
 
 @layer components {
 
   .card {
-    @apply bg-white border border-gray-200 shadow-sm rounded-2xl
-          dark:bg-slate-800 dark:border-slate-700 dark:shadow-lg;
+    @apply bg-white border border-gray-200/80 shadow-sm rounded-2xl
+          dark:bg-slate-800/60 dark:border-slate-700/80 dark:shadow-lg;
   }
 
   .card-hover {
-    @apply transition-all duration-300 hover:-translate-y-2
-           hover:shadow-md dark:hover:shadow-2xl;
+    @apply transition-all duration-300 hover:-translate-y-1.5
+           hover:shadow-xl hover:shadow-gray-200/60
+           dark:hover:shadow-2xl dark:hover:shadow-black/30
+           hover:border-gray-300 dark:hover:border-slate-600;
   }
 
   .text-primary {
@@ -66,15 +100,34 @@ html {
   }
 
   .tag {
-    @apply px-3 py-1 text-xs rounded-full
-           bg-gray-100 text-gray-700
-           dark:bg-slate-700 dark:text-gray-200;
+    @apply px-3 py-1 text-xs font-medium rounded-full
+           bg-gray-100 text-gray-700 border border-gray-200/70
+           dark:bg-slate-700/60 dark:text-gray-200 dark:border-slate-600/60;
   }
 
   .button {
-    @apply px-4 py-2 rounded-lg border transition
-           border-gray-300 text-slate-900 hover:bg-black hover:text-white
+    @apply px-4 py-2 rounded-xl border transition-all duration-200
+           border-gray-300 text-slate-900 hover:bg-black hover:text-white hover:border-black
            dark:border-gray-600 dark:text-white
            dark:hover:bg-white dark:hover:text-black;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 rounded-xl px-6 py-3 font-semibold
+           bg-gray-900 text-white dark:bg-white dark:text-black
+           shadow-lg shadow-gray-900/10 dark:shadow-black/30
+           transition-all duration-200 hover:scale-[1.03] hover:shadow-xl active:scale-[0.98];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 rounded-xl px-6 py-3 font-semibold
+           border border-gray-300 text-gray-900 dark:border-gray-700 dark:text-white
+           transition-all duration-200 hover:scale-[1.03] hover:border-gray-400
+           dark:hover:border-gray-500 active:scale-[0.98];
+  }
+
+  .section-label {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest
+           text-accent dark:text-accent-light;
   }
 }

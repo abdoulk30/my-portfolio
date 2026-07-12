@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { ExternalLink, X } from "lucide-react";
+import { GithubIcon } from "./BrandIcons";
 
 export default function ProjectModal({ project, onClose }) {
   const [isZoomed, setIsZoomed] = useState(false);
@@ -17,16 +19,6 @@ export default function ProjectModal({ project, onClose }) {
 
   if (!project) return null;
 
-  const isJobSync = project.title === "JobSync";
-
-  const jobSyncHighlights = [
-    "Implemented JWT-based authentication with protected API routes for secure user sessions",
-    "Designed RESTful API architecture supporting full CRUD operations for job tracking",
-    "Integrated PostgreSQL with Prisma ORM for structured and scalable data persistence",
-    "Built advanced filtering and search system across multiple application fields",
-    "Developed responsive React dashboard with modular components and optimized UX flow",
-  ];
-
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
       <div
@@ -36,7 +28,7 @@ export default function ProjectModal({ project, onClose }) {
 
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative z-10 w-[80%] max-w-4xl max-h-[85vh]
+        className="relative z-10 w-[90%] sm:w-[80%] max-w-4xl max-h-[85vh]
                    overflow-y-auto rounded-3xl bg-white dark:bg-slate-800
                    shadow-2xl text-primary animate-slide-up
                    pointer-events-auto scrollbar-hide"
@@ -45,12 +37,13 @@ export default function ProjectModal({ project, onClose }) {
         <div className="sticky top-0 right-0 z-[60] flex justify-end p-4 pointer-events-none">
           <button
             onClick={onClose}
+            aria-label="Close"
             className="flex h-10 w-10 items-center justify-center
-                       rounded-full bg-black/50 text-2xl text-white
+                       rounded-full bg-black/50 text-white
                        backdrop-blur-md transition hover:bg-black/70
                        hover:scale-110 active:scale-95 pointer-events-auto"
           >
-            ×
+            <X size={18} />
           </button>
         </div>
 
@@ -74,16 +67,16 @@ export default function ProjectModal({ project, onClose }) {
             {project.fullDescription}
           </p>
 
-          {/* ⭐ TECHNICAL HIGHLIGHTS (ONLY JOBSYNC) */}
-          {isJobSync && (
+          {/* TECHNICAL HIGHLIGHTS */}
+          {project.highlights?.length > 0 && (
             <div className="mb-8">
               <h3 className="mb-4 text-xl font-semibold">
                 Technical Highlights
               </h3>
               <ul className="space-y-3 text-secondary text-sm leading-relaxed">
-                {jobSyncHighlights.map((item, i) => (
+                {project.highlights.map((item, i) => (
                   <li key={i} className="flex gap-2">
-                    <span className="mt-1 text-gray-400">•</span>
+                    <span className="mt-1 text-accent">•</span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -104,15 +97,16 @@ export default function ProjectModal({ project, onClose }) {
           </div>
 
           {/* LINKS */}
-          <div className="flex gap-4 pb-4">
+          <div className="flex flex-wrap gap-4 pb-4">
             {project.live && (
               <a
                 href={project.live}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-xl bg-gray-900 text-white dark:bg-white dark:text-black px-6 py-3 font-semibold transition hover:scale-105 active:scale-95"
+                className="btn-primary"
               >
                 Live Demo
+                <ExternalLink size={16} />
               </a>
             )}
 
@@ -121,9 +115,10 @@ export default function ProjectModal({ project, onClose }) {
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="button px-6 py-3 font-semibold transition hover:scale-105 active:scale-95"
+                className="button px-6 py-3 font-semibold inline-flex items-center gap-2 transition hover:scale-105 active:scale-95"
               >
                 GitHub
+                <GithubIcon size={16} />
               </a>
             )}
           </div>
