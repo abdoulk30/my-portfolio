@@ -20,7 +20,7 @@ export default function Skills() {
     {
       title: "Databases",
       icon: Database,
-      skills: ["PostgreSQL", "MongoDB", "Prisma ORM", "FastAPI"],
+      skills: ["PostgreSQL", "MongoDB", "Prisma ORM"],
     },
     {
       title: "Tools & AI",
